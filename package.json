@@ -1,0 +1,16 @@
+{
+  "name": "appfit-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix server & npm run dev --prefix client",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build:deps && npm run build:db && npm run build:client && npm run build:server",
+    "build:deps": "npm install --prefix server && npm install --prefix client",
+    "build:db": "npm run prisma:generate --prefix server && npm run prisma:push --prefix server",
+    "build:client": "npm run build --prefix client",
+    "build:server": "npm run build --prefix server",
+    "start": "npm run start --prefix server"
+  }
+}

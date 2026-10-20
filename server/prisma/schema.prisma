@@ -1,0 +1,70 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id              String           @id @default(uuid())
+  pinHash         String
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  workoutSessions WorkoutSession[]
+}
+
+model MuscleGroup {
+  id              String           @id @default(uuid())
+  name            String           @unique
+  displayName     String
+  icon            String
+  displayOrder    Int              @default(0)
+  exercises       Exercise[]
+  workoutSessions WorkoutSession[]
+}
+
+model Exercise {
+  id                 String       @id @default(uuid())
+  name               String
+  muscleGroupId      String
+  muscleGroup        MuscleGroup  @relation(fields: [muscleGroupId], references: [id], onDelete: Cascade)
+  imageUrl           String
+  instructions       String
+  defaultSets        Int          @default(3)
+  defaultReps        Int          @default(10)
+  defaultWeightKg    Float        @default(20.0)
+  defaultRestSeconds Int          @default(60)
+  workoutSets        WorkoutSet[]
+}
+
+model WorkoutSession {
+  id              String       @id @default(uuid())
+  userId          String
+  user            User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  muscleGroupId   String
+  muscleGroup     MuscleGroup  @relation(fields: [muscleGroupId], references: [id], onDelete: Cascade)
+  date            String       // YYYY-MM-DD
+  completed       Boolean      @default(false)
+  durationMinutes Int          @default(0)
+  totalWeightKg   Float        @default(0)
+  totalSets       Int          @default(0)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  sets            WorkoutSet[]
+}
+
+model WorkoutSet {
+  id               String         @id @default(uuid())
+  workoutSessionId String
+  workoutSession   WorkoutSession @relation(fields: [workoutSessionId], references: [id], onDelete: Cascade)
+  exerciseId       String
+  exercise         Exercise       @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  setNumber        Int
+  weightKg         Float          @default(0)
+  reps             Int            @default(0)
+  isCompleted      Boolean        @default(false)
+  completedAt      DateTime?
+  createdAt        DateTime       @default(now())
+}
