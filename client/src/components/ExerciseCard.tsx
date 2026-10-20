@@ -135,23 +135,23 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
         </div>
 
         {/* Bottom title inside banner */}
-        <div style={{ position: 'absolute', bottom: '10px', left: '16px', right: '16px' }}>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#f8fafc', lineHeight: 1.25 }}>
+        <div style={{ position: 'absolute', bottom: '10px', left: '12px', right: '12px' }}>
+          <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#f8fafc', lineHeight: 1.25 }}>
             {exercise.exerciseName}
           </h3>
         </div>
       </div>
 
       {/* Body content */}
-      <div style={{ padding: '14px 16px' }}>
+      <div style={{ padding: '12px 10px' }}>
         {/* Quick action bar */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: '14px',
-            gap: '8px',
+            marginBottom: '12px',
+            gap: '6px',
           }}
         >
           <button
@@ -159,7 +159,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
             style={{
               background: 'transparent',
               color: '#94a3b8',
-              fontSize: '0.78rem',
+              fontSize: '0.76rem',
               fontWeight: 600,
               display: 'flex',
               alignItems: 'center',
@@ -167,9 +167,9 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
               padding: '4px 0',
             }}
           >
-            <Info size={14} color="#06b6d4" />
-            <span>Técnica & Instrucciones</span>
-            {showInstructions ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+            <Info size={13} color="#06b6d4" />
+            <span>Instrucciones</span>
+            {showInstructions ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
           </button>
 
           {/* AI Alternative button */}
@@ -178,19 +178,19 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '5px',
+              gap: '4px',
               background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2))',
               border: '1px solid rgba(139, 92, 246, 0.45)',
               color: '#c084fc',
-              padding: '6px 12px',
-              borderRadius: '12px',
-              fontSize: '0.75rem',
+              padding: '5px 10px',
+              borderRadius: '10px',
+              fontSize: '0.73rem',
               fontWeight: 700,
               boxShadow: '0 2px 10px rgba(139, 92, 246, 0.15)',
             }}
             title="Sustituir si la máquina está ocupada"
           >
-            <Sparkles size={13} color="#c084fc" />
+            <Sparkles size={12} color="#c084fc" />
             <span>Alternativa IA</span>
           </button>
         </div>
@@ -224,17 +224,17 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '32px 1fr 1fr 46px',
-            gap: '10px',
-            padding: '0 14px 6px',
+            gridTemplateColumns: '22px 1fr 1fr 38px',
+            gap: '6px',
+            padding: '0 8px 6px',
             color: '#64748b',
-            fontSize: '0.72rem',
+            fontSize: '0.7rem',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.04em',
           }}
         >
-          <div>Serie</div>
+          <div>#</div>
           <div style={{ textAlign: 'center' }}>Peso (kg)</div>
           <div style={{ textAlign: 'center' }}>Reps</div>
           <div style={{ textAlign: 'center' }}>Listo</div>
@@ -243,26 +243,26 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
         {/* Set Rows */}
         {exercise.sets.map((set, setIndex) => (
           <div key={setIndex} className={`set-row ${set.isCompleted ? 'completed' : ''}`}>
-            <div style={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.85rem' }}>
+            <div style={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.78rem' }}>
               #{set.setNumber}
             </div>
 
             {/* Weight stepper */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
               <button
                 className="stepper-btn"
                 onClick={() => handleWeightStep(setIndex, -2.5)}
                 disabled={set.isCompleted}
                 aria-label="Restar 2.5 kg"
               >
-                <Minus size={15} />
+                <Minus size={13} />
               </button>
               <div
                 style={{
-                  minWidth: '40px',
+                  minWidth: '34px',
                   textAlign: 'center',
                   fontWeight: 800,
-                  fontSize: '0.98rem',
+                  fontSize: '0.9rem',
                   color: set.isCompleted ? '#10b981' : '#f8fafc',
                 }}
               >
@@ -274,26 +274,26 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
                 disabled={set.isCompleted}
                 aria-label="Sumar 2.5 kg"
               >
-                <Plus size={15} />
+                <Plus size={13} />
               </button>
             </div>
 
             {/* Reps stepper */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
               <button
                 className="stepper-btn"
                 onClick={() => handleRepsStep(setIndex, -1)}
                 disabled={set.isCompleted}
                 aria-label="Restar 1 rep"
               >
-                <Minus size={15} />
+                <Minus size={13} />
               </button>
               <div
                 style={{
-                  minWidth: '32px',
+                  minWidth: '26px',
                   textAlign: 'center',
                   fontWeight: 800,
-                  fontSize: '0.98rem',
+                  fontSize: '0.9rem',
                   color: set.isCompleted ? '#10b981' : '#f8fafc',
                 }}
               >
@@ -305,7 +305,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
                 disabled={set.isCompleted}
                 aria-label="Sumar 1 rep"
               >
-                <Plus size={15} />
+                <Plus size={13} />
               </button>
             </div>
 
@@ -316,7 +316,7 @@ export const ExerciseCard: React.FC<ExerciseCardProps> = ({
                 onClick={() => handleToggleComplete(setIndex)}
                 aria-label="Marcar serie como realizada"
               >
-                <Check size={20} strokeWidth={3} />
+                <Check size={18} strokeWidth={3} />
               </button>
             </div>
           </div>

@@ -346,7 +346,7 @@ export function App() {
               <MonthlyMetricsCard metrics={monthlyMetrics} />
             </>
           ) : (
-            <div style={{ padding: '16px 16px 20px' }}>
+            <div style={{ padding: '12px 10px 20px' }}>
               <div
                 style={{
                   display: 'flex',
@@ -354,9 +354,9 @@ export function App() {
                   justifyContent: 'space-between',
                   background: 'rgba(16, 185, 129, 0.12)',
                   border: '1px solid rgba(16, 185, 129, 0.3)',
-                  padding: '12px 16px',
+                  padding: '10px 14px',
                   borderRadius: '16px',
-                  marginBottom: '18px',
+                  marginBottom: '14px',
                 }}
               >
                 <div>
