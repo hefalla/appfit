@@ -9,9 +9,9 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
       - key: APP_PIN
-        value: 1234
+        value: "1234"
       - key: DATABASE_URL
-        value: file:./dev.db
-      - key: GEMINI_API_KEY
-        sync: false
+        value: "file:./dev.db"
